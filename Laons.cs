@@ -13,31 +13,35 @@ namespace Test2
     }
     internal class Laons
     {
-        //public List<Laon> FillTheLoanListFromData(string[] lines)
-        //{
-        //    List<Laons> list = new List<Laons> { };
-        //    for (int i = 2; i < lines.Length; i++)
-        //    { 
-        //        string[] s = lines[i].Split(',');
-        //        string _Reader_id = s[0];
-        //        string _Name = s[1];
-        //        string _type = s[2];
-        //        string _Book = s[3];
-        //        int _loan_day =int.Parse( s[4]);
-        //        int _return_day;
-        //        if (s[5] == "")
-        //             _return_day = 0;
-        //        else 
-        //             _return_day =int.Parse(s[5]);
-        //        Laon laon=new Laon(_Reader_id,_Name,_type, _Book, _loan_day,_return_day);
-        //        Console.WriteLine(laon.Reader_id);
-        //        Console.WriteLine(laon.Name);
-        //        list.Add(laon);
-               
-        //    }
-        //    Console.WriteLine(list.Count);
-        //    return list;
-        //}
-    }
+        public List<Laon> FillTheLoanListFromData(List<string[]> rows)
+        {
+            System.Diagnostics.Debug.WriteLine("NEW VERSION");
+            List<Laon> list = new List<Laon> { };
+            for (int i = 0; i < rows.Count; i++)
+            {
+                string readerId = rows[i][0];
+                string name = rows[i][1];
+                string type = rows[i][2];
+                string book = rows[i][3];
 
+                string loanDayText = rows[i][4];
+                string returnDayText = rows[i][5];
+                for (int column = 0; column < rows[i].Length; column++)
+                {
+                    Console.WriteLine($"{column}: '{rows[i][column]}'");
+                }
+                Laon laon = new Laon(readerId, name, type, book, int.Parse(rows[i][4]), int.Parse(rows[i][5]));
+                list.Add(laon);
+
+                Console.WriteLine(list.Count);
+
+            }
+            return list;
+        }
+    }
 }
+    
+          
+        
+    
+

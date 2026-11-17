@@ -35,9 +35,11 @@ namespace Test2
             Console.Error.WriteLine("skeleton ok: read " + Path.GetFileName(path) + " - report day " + reportDay + " - " + rows.Count + " rows");
 
             // Write your code here. 'reportDay' and 'rows' are ready.
-            //Laons l= new Laons("1","Abc","Student","as",3,45);
-            //Console.WriteLine("-------Test-------");
-            //Console.WriteLine(l.FillTheLoanListFromData(lines));//FillTheLoanListFromData
+
+            Laons l = new Laons();
+            Console.WriteLine("-------Test-------");
+          
+            Console.WriteLine(l.FillTheLoanListFromData(rows));//FillTheLoanListFromData
 
         }
 
