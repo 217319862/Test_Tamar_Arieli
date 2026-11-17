@@ -1,0 +1,405 @@
+{
+ "format": "placement-exam-v1",
+ "variant": "v1-plus",
+ "setupOk": true,
+ "student": {
+  "name": "תמר אריאלי",
+  "id": "217319862",
+  "lang": "C#",
+  "repo": ""
+ },
+ "t": {
+  "start": 1794916304263,
+  "aEnd": 1794919206656,
+  "bEnd": 1794920032587,
+  "cStart": 1794920032587,
+  "levels": {
+   "1": 1794928977634,
+   "2": 1794928978633
+  },
+  "hints": [],
+  "hintCards": [],
+  "run1Open": 1794929192243,
+  "run1Done": 1794929220713,
+  "dStart": 1794929220713,
+  "run2Open": 1794929257726,
+  "run2Done": 1794929261545,
+  "eEnd": 1794929442096,
+  "submitted": 1794929467808,
+  "templateAt": 1794915825891
+ },
+ "a": {
+  "summary": "התוכנית מקבלת קובץ קלט שבו: יום הדו\"ח, ורשימה של השאלות (ID של המשאיל, שם, סוג המשאיל, שם הספר, יום השאלה ויום החזרה).\nהתוכנית מחשבת ומחזירה את נתוני הדוחות - רשימה של משאילות והסכום של הדוח הניתן להם.\n",
+  "cases": [
+   {
+    "type": "student",
+    "loan": "10",
+    "ret": "30",
+    "kind": "fine",
+    "val": "6",
+    "why": ""
+   },
+   {
+    "type": "teacher",
+    "loan": "10",
+    "ret": "80",
+    "kind": "flag",
+    "val": "",
+    "why": ""
+   },
+   {
+    "type": "student",
+    "loan": "80",
+    "ret": "20",
+    "kind": "error",
+    "val": "",
+    "why": ""
+   },
+   {
+    "type": "guest",
+    "loan": "8",
+    "ret": "20",
+    "kind": "fine",
+    "val": "13",
+    "why": ""
+   },
+   {
+    "type": "student",
+    "loan": "2",
+    "ret": "50",
+    "kind": "fine",
+    "val": "30",
+    "why": ""
+   }
+  ],
+  "questions": [],
+  "opened": [
+   {
+    "id": 3,
+    "t": 1794917037493
+   },
+   {
+    "id": 5,
+    "t": 1794917078429
+   }
+  ],
+  "plan": [
+   {
+    "part": "Program.cs",
+    "does": "פונקציית Main , שהיא מקבלת את הנתונים מהמשתמש, ושולחת אותם למחלקת CalculateFine.cs - המחלקה שתחשב את הדוחות."
+   },
+   {
+    "part": "CalculateFine.cs",
+    "does": "מחלקת הלוגיקה, יש בה פונקציה שמקבלת את הנתונים מה- Main , והיא ממפה את ההשאלות, כל השאלה נשלחת לפונקציה נפרדת שבודקת מה הסימון של ההשאלה, וגובה הקנס, האובייקט נשלח למחלקה נפרדת שהיא אחראית על ההכנסה לרשימות."
+   },
+   {
+    "part": "FinesToList.cs",
+    "does": "המחלקה שאחראית על ההכנסה לרשימת הקנסות המוחזרת, בה יש פונקציה שמקבלת אובייקט של השאלה שכולל בתוכו סוג וסכום של הקנס, והיא מכניסה לרשימת הפלט, אם הסוג הוא: \"לבירור\"/\"שורה שגויה\" - האובייקט יכנס גם לרשימה נפרדת - ישלח לפונקציה נפרדת - בתוך אותה מחלקה."
+   },
+   {
+    "part": "Fines.cs",
+    "does": "המחלקה שמכילה רשימת הנתונים - הרשימה של הקנסות , יש בה פונקציית Add שהיא מקבלת אובייקט ומכניסה אותו לרשימה."
+   },
+   {
+    "part": "",
+    "does": ""
+   },
+   {
+    "part": "",
+    "does": ""
+   }
+  ],
+  "models": [
+   {
+    "name": "Loan.cs - (נתוני הקלט)",
+    "fields": "reader_id,name,type,book,loan_day,return_day"
+   },
+   {
+    "name": "Student.cs - (נתוני הפלט)",
+    "fields": "reader_id,name,type,fine"
+   },
+   {
+    "name": "FLAGGED.cs - (נתוני הפלט - רשימה לבירור...)",
+    "fields": "reader_id,name,type"
+   },
+   {
+    "name": "ErrorRows.cs - (נתוני הפלט - רשימת השורות השגויות)",
+    "fields": "Id,reader_id,name,type"
+   }
+  ]
+ },
+ "b": {
+  "b1q1": "8",
+  "b1q2": "1,2,0",
+  "b2": {
+   "q1": "both",
+   "q2": "b",
+   "q3": "once",
+   "q4": "memory",
+   "text": ""
+  },
+  "b3": {
+   "marks": {
+    "8": "ילדה בת בדיוק 12 תשלם את מחיר המבוגרות, למרות שמגיע לה לשלם את המחיר של הילדות.\nהתיקון:  if (ages[i] <= 12)",
+    "14": "ההנחה היא רק על כרטיסי המבוגרות, צריך לבדוק כמה מבוגרות יש ברשימה, ולהוריד את המחיר רק להם."
+   },
+   "unmarked": {},
+   "approve": "no",
+   "testAges": "5,30,8,12,15,16,2,4,10,18,13",
+   "testExp": "300"
+  }
+ },
+ "c": {
+  "codeBefore": "",
+  "out1a": "",
+  "out1b": "",
+  "via": "script",
+  "results": {
+   "kind": "placement-results",
+   "version": 1,
+   "mode": "C",
+   "lang": "csharp",
+   "created": "2026-11-17T17:26:04",
+   "created_epoch": 1794929164908,
+   "at": null,
+   "build": {
+    "ok": true,
+    "output": "Build succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:02.33",
+    "ms": 2548
+   },
+   "runs": [
+    {
+     "file": "check1a.txt",
+     "exit": 0,
+     "timed_out": false,
+     "ms": 69,
+     "stdout": "",
+     "stderr_tail": "skeleton ok: read check1a.txt - report day 150 - 20 rows",
+     "decode_problem": false
+    },
+    {
+     "file": "check1b.txt",
+     "exit": 0,
+     "timed_out": false,
+     "ms": 58,
+     "stdout": "",
+     "stderr_tail": "skeleton ok: read check1b.txt - report day 150 - 7 rows",
+     "decode_problem": false
+    }
+   ],
+   "sample_run": {
+    "file": "sample.txt",
+    "exit": 0,
+    "timed_out": false,
+    "ms": 60,
+    "stdout": "",
+    "stderr_tail": "skeleton ok: read sample.txt - report day 120 - 6 rows",
+    "decode_problem": false
+   },
+   "warnings": [],
+   "files": [
+    {
+     "path": "app/Program.cs",
+     "lines": 57,
+     "classes": [
+      "Program"
+     ],
+     "functions": [
+      {
+       "name": "Main",
+       "lines": 14
+      },
+      {
+       "name": "ReadReportDay",
+       "lines": 4
+      },
+      {
+       "name": "ReadRows",
+       "lines": 12
+      },
+      {
+       "name": "FindSample",
+       "lines": 11
+      }
+     ],
+     "type_ifs": 0
+    }
+   ],
+   "git": {
+    "available": true,
+    "commit": "fb30740",
+    "note": "saved your work in a commit: \"before change\"",
+    "log": "13e61eb|2026-11-17 13:47:20 +0200|start\nfb30740|2026-11-17 17:26:04 +0200|before change",
+    "numstat": "commit|13e61eb|start\n\n7\t0\t.gitignore\n55\t0\tapp/Program.cs\n11\t0\tapp/app.csproj\n449\t0\tcheck/run_checks.py\n8\t0\tdata/sample.txt\ncommit|fb30740|before change\n\n2\t0\tapp/Program.cs"
+   }
+  },
+  "uploads": [
+   {
+    "t": 1794929192243,
+    "created": "2026-11-17T17:26:04",
+    "commit": "fb30740",
+    "warnings": [],
+    "runs": [
+     {
+      "file": "check1a.txt",
+      "exit": 0,
+      "timed_out": false
+     },
+     {
+      "file": "check1b.txt",
+      "exit": 0,
+      "timed_out": false
+     }
+    ]
+   }
+  ]
+ },
+ "d": {
+  "codeAfter": "",
+  "out2": "",
+  "via": "script",
+  "results": {
+   "kind": "placement-results",
+   "version": 1,
+   "mode": "D",
+   "lang": "csharp",
+   "created": "2026-11-17T17:27:20",
+   "created_epoch": 1794929240347,
+   "at": null,
+   "build": {
+    "ok": true,
+    "output": "Build succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.28",
+    "ms": 1500
+   },
+   "runs": [
+    {
+     "file": "check2.txt",
+     "exit": 0,
+     "timed_out": false,
+     "ms": 134,
+     "stdout": "",
+     "stderr_tail": "skeleton ok: read check2.txt - report day 200 - 17 rows",
+     "decode_problem": false
+    }
+   ],
+   "sample_run": {
+    "file": "sample.txt",
+    "exit": 0,
+    "timed_out": false,
+    "ms": 119,
+    "stdout": "",
+    "stderr_tail": "skeleton ok: read sample.txt - report day 120 - 6 rows",
+    "decode_problem": false
+   },
+   "warnings": [],
+   "files": [
+    {
+     "path": "app/Program.cs",
+     "lines": 57,
+     "classes": [
+      "Program"
+     ],
+     "functions": [
+      {
+       "name": "Main",
+       "lines": 14
+      },
+      {
+       "name": "ReadReportDay",
+       "lines": 4
+      },
+      {
+       "name": "ReadRows",
+       "lines": 12
+      },
+      {
+       "name": "FindSample",
+       "lines": 11
+      }
+     ],
+     "type_ifs": 0
+    }
+   ],
+   "git": {
+    "available": true,
+    "commit": "39740aa",
+    "note": "saved your work in a commit: \"after change\"",
+    "log": "13e61eb|2026-11-17 13:47:20 +0200|start\nfb30740|2026-11-17 17:26:04 +0200|before change\n39740aa|2026-11-17 17:27:20 +0200|after change",
+    "numstat": "commit|13e61eb|start\n\n7\t0\t.gitignore\n55\t0\tapp/Program.cs\n11\t0\tapp/app.csproj\n449\t0\tcheck/run_checks.py\n8\t0\tdata/sample.txt\ncommit|fb30740|before change\n\n2\t0\tapp/Program.cs\ncommit|39740aa|after change\n\n79\t0\tresults_C.json"
+   }
+  },
+  "uploads": [
+   {
+    "t": 1794929257726,
+    "created": "2026-11-17T17:27:20",
+    "commit": "39740aa",
+    "warnings": [],
+    "runs": [
+     {
+      "file": "check2.txt",
+      "exit": 0,
+      "timed_out": false
+     }
+    ]
+   }
+  ]
+ },
+ "e": {
+  "conf": {
+   "a": "5",
+   "b": "5",
+   "c": "4",
+   "d": "3"
+  },
+  "cleanLevel": "3",
+  "hardest": "",
+  "stuck": "",
+  "decision": "",
+  "million": "",
+  "gitLog": "13e61eb|2026-11-17 13:47:20 +0200|start\nfb30740|2026-11-17 17:26:04 +0200|before change\n39740aa|2026-11-17 17:27:20 +0200|after change",
+  "diag": {
+   "marks": {
+    "s1": {
+     "A": [],
+     "B": [],
+     "C": []
+    },
+    "s2": {
+     "A": [],
+     "B": [],
+     "C": []
+    },
+    "s3": {
+     "A": [],
+     "B": [],
+     "C": []
+    }
+   },
+   "newc": {
+    "s1": {
+     "A": false,
+     "B": false,
+     "C": false
+    },
+    "s2": {
+     "A": false,
+     "B": false,
+     "C": false
+    },
+    "s3": {
+     "A": false,
+     "B": false,
+     "C": false
+    }
+   },
+   "choice": "C",
+   "reason": "r2",
+   "move": {
+    "method": "",
+    "to": ""
+   },
+   "own": "C"
+  }
+ },
+ "integrity": "d46753e1"
+}
